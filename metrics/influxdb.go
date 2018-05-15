@@ -89,9 +89,16 @@ func StopInfluxDB() {
 }
 
 func (w *influxDBWriter) Write(bp influxdb.BatchPoints) error {
-	c, err := influxdb.NewUDPClient(influxdb.UDPConfig{
-		Addr: w.config.Address,
-	})
+	if (isset(w.config.UseHTTPTransport) and (w.config.UseHTTPTransport == true)){
+		c, err := influxdb.NewHTTPClient(influxdb.HTTPConfig{
+			Addr: w.config.Address,
+		})
+	} else {
+		c, err := influxdb.NewUDPClient(influxdb.UDPConfig{
+			Addr: w.config.Address,
+		})
+	}
+	
 
 	if err != nil {
 		return err

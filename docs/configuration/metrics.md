@@ -103,6 +103,13 @@
     #
     pushinterval = "10s"
 
+    # Use HTTP Transport for InfluxDB instead of default UDP
+    #
+    # Optional
+    # Default: false
+    #
+    UseHTTPTransport = true
+
   # ...
 ```
 

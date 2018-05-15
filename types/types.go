@@ -436,6 +436,7 @@ type Statsd struct {
 type InfluxDB struct {
 	Address      string `description:"InfluxDB address"`
 	PushInterval string `description:"InfluxDB push interval"`
+	UseHTTPTransport bool `description: "Use HTTP as transport type instead of default UDP for InfluxDB push`
 }
 
 // Buckets holds Prometheus Buckets
